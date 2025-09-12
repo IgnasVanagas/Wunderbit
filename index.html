@@ -4,17 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Wunderbit — Thoughtful Work, Bold Technology</title>
-    <meta name="description" content="Wunderbit blends thoughtful craft with bold technology. Manage your work with patience and pace." />
+    <meta name="description" content="Wunderbit blends thoughtful craft with bold technology. Modern, full-screen storytelling with motion." />
+    <meta name="theme-color" content="#E8623F" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/png" href="branding/w-orange_1@4x.png" />
   </head>
   <body>
-    <header class="site-header reveal fade">
+    <div class="bg-plinth" aria-hidden="true"></div>
+    <header class="site-header">
       <div class="container nav">
-        <a class="brand" href="#" aria-label="Wunderbit home">
+        <a class="brand" href="#intro" aria-label="Wunderbit home">
           <img src="branding/wb-orange_1@4x.png" alt="Wunderbit" width="132" height="32" />
         </a>
         <nav class="primary-nav" aria-label="Primary">
@@ -23,9 +25,10 @@
             <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
           </button>
           <ul id="nav-list" class="nav-list">
-            <li><a href="#product">Product</a></li>
-            <li><a href="#solutions">Solutions</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="#intro">Intro</a></li>
+            <li><a href="#showcase">Showcase</a></li>
+            <li><a href="#story">Story</a></li>
+            <li><a href="#type">Type</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
@@ -33,133 +36,154 @@
       </div>
     </header>
 
-    <main>
-      <section class="hero" id="product">
-        <div class="hero-bg" aria-hidden="true">
-          <div class="blob blob-orange"></div>
-          <div class="blob blob-brown"></div>
-        </div>
-        <div class="container grid-2">
-          <div class="hero-copy reveal up">
-            <h1>
-              Manage your work with patience
-            </h1>
-            <p class="lead">We build considerate tools that help teams move with clarity and confidence. Pulsing with momentum, grounded in craft.</p>
-            <div class="actions">
-              <a class="btn btn-primary" href="#contact">Request a demo</a>
-              <a class="btn btn-ghost" href="#about">Learn more</a>
-            </div>
+    <aside class="side-dots" aria-label="Section navigation">
+      <a href="#intro" class="dot" aria-label="Intro"></a>
+      <a href="#showcase" class="dot" aria-label="Showcase"></a>
+      <a href="#story" class="dot" aria-label="Story"></a>
+      <a href="#type" class="dot" aria-label="Typography"></a>
+      <a href="#contact" class="dot" aria-label="Contact"></a>
+    </aside>
+
+    <main id="smooth-wrapper">
+      <div id="smooth-content">
+        <!-- Panel: Intro / Hero -->
+        <section class="panel panel-hero" id="intro">
+          <div class="bg-orbs" aria-hidden="true">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
           </div>
-          <div class="hero-art reveal up" data-parallax="0.5">
-            <div class="logo-stack card-gradient">
+          <div class="hero-inner container">
+            <div class="eyebrow">Wunderbit</div>
+            <h1 class="display">Thoughtful Work, <span class="grad">Bold Technology</span></h1>
+            <p class="sub">Tools that move with your pace — clarity, confidence, momentum.</p>
+            <div class="actions">
+              <a class="btn btn-primary mag" href="#showcase">Explore</a>
+              <a class="btn btn-ghost" href="#contact">Request a demo</a>
+            </div>
+            <div class="logo-plinth">
               <img class="logo-main" src="branding/wb-white_1@4x.png" alt="Wunderbit logo" />
               <img class="logo-shadow" src="branding/wb-orange_1@4x.png" alt="" aria-hidden="true" />
             </div>
           </div>
-        </div>
-        <button class="scroll-cue" aria-label="Scroll to content" onclick="document.querySelector('#solutions').scrollIntoView({behavior:'smooth'});">
-          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </section>
+          <button class="scroll-cue" aria-label="Scroll to showcase" onclick="document.querySelector('#showcase').scrollIntoView({behavior:'smooth'});">
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </section>
 
-      <section class="features" id="solutions">
-        <div class="container">
-          <h2 class="reveal up">Technology that moves with you</h2>
-          <div class="feature-grid">
-            <article class="feature-card reveal up" style="--delay:0ms">
-              <h3>Stable by design</h3>
-              <p>Built from simple, balanced primitives for reliability and ease of change.</p>
-            </article>
-            <article class="feature-card reveal up" style="--delay:100ms">
-              <h3>Paced momentum</h3>
-              <p>The pulsing wave in our identity reflects our product rhythm—steady, never frantic.</p>
-            </article>
-            <article class="feature-card reveal up" style="--delay:200ms">
-              <h3>Clear typography</h3>
-              <p>Legible, calm interfaces that reduce cognitive load and surface what matters.</p>
-            </article>
-            <article class="feature-card reveal up" style="--delay:300ms">
-              <h3>Warm contrast</h3>
-              <p>Energetic orange meets earthy brown for a confident, human tone.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="brand-story" id="about">
-        <div class="container grid-2">
-          <div class="reveal up">
-            <h2>Logo design: apžvalga</h2>
-            <p><strong>Įkvėpimas.</strong> „W“ simbolyje slypi pulsuojanti banga – ji metaforiškai atspindi judėjimą ir mūsų pažangų požiūrį į technologijas.</p>
-            <p><strong>Formos logika.</strong> Ženklas konstruojamas iš penkių vienodo pločio apskritimo ketvirčių – tai suteikia draugiškumo ir stabilumo balansą.</p>
-            <p><strong>Spalva.</strong> Oranžinė <code>#E8623F</code> spinduliuoja energiją bei pasitikėjimą, kontrastuodama su tamsiai ruda <code>#281600</code>.</p>
-          </div>
-          <div class="palette reveal up" style="--delay:150ms">
-            <div class="swatch swatch-orange">
-              <span class="name">oranžinė</span>
-              <span class="hex">#E8623F</span>
-            </div>
-            <div class="swatch swatch-brown">
-              <span class="name">tamsiai ruda</span>
-              <span class="hex">#281600</span>
-            </div>
-            <div class="swatch swatch-offwhite">
-              <span class="name">pageltusi balta</span>
-              <span class="hex">#DFDFD5</span>
-            </div>
-            <div class="swatch swatch-white">
-              <span class="name">baltų balta</span>
-              <span class="hex">#FFFFFF</span>
+        <!-- Panel: Horizontal Showcase (pinned) -->
+        <section class="panel panel-pin" id="showcase" aria-label="Showcase">
+          <div class="h-scroll">
+            <div class="h-track">
+              <article class="h-card h-theme-1">
+                <div class="h-inner">
+                  <h2>Stable by design</h2>
+                  <p>Simple, balanced primitives for reliability and ease of change.</p>
+                </div>
+              </article>
+              <article class="h-card h-theme-2">
+                <div class="h-inner">
+                  <h2>Paced momentum</h2>
+                  <p>Steady rhythm like a heartbeat — never frantic, always forward.</p>
+                </div>
+              </article>
+              <article class="h-card h-theme-3">
+                <div class="h-inner">
+                  <h2>Clear typography</h2>
+                  <p>Legible, calm interfaces that surface what matters most.</p>
+                </div>
+              </article>
+              <article class="h-card h-theme-4">
+                <div class="h-inner">
+                  <h2>Warm contrast</h2>
+                  <p>Energetic orange meets earthy brown for a human, confident tone.</p>
+                </div>
+              </article>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="type-guide">
-        <div class="container">
-          <h2 class="reveal up">Typography</h2>
-          <div class="type-grid">
-            <div class="reveal up">
-              <div class="type-sample h1">H1 — 34pt Inter Bold</div>
-              <div class="type-sample h2">H2 — 22pt Inter Regular</div>
-              <div class="type-sample h3">H3 — 18pt Inter Light</div>
-              <div class="type-sample body">Body Text — 14pt Plex Mono</div>
+        <!-- Panel: Brand Story / Palette -->
+        <section class="panel panel-story" id="story">
+          <div class="container story-grid">
+            <div>
+              <h2>Logo design: apžvalga</h2>
+              <p><strong>Įkvėpimas.</strong> „W“ simbolyje slypi pulsuojanti banga – ji metaforiškai atspindi judėjimą ir mūsų pažangų požiūrį į technologijas.</p>
+              <p><strong>Formos logika.</strong> Ženklas konstruojamas iš penkių vienodo pločio apskritimo ketvirčių – tai suteikia draugiškumo ir stabilumo balansą.</p>
+              <p><strong>Spalva.</strong> Oranžinė <code>#E8623F</code> spinduliuoja energiją bei pasitikėjimą, kontrastuodama su tamsiai ruda <code>#281600</code>.</p>
             </div>
-            <div class="reveal up" style="--delay:120ms">
-              <p class="lead">Manage your work with patience</p>
+            <div class="palette">
+              <div class="swatch swatch-orange">
+                <span class="name">oranžinė</span>
+                <span class="hex">#E8623F</span>
+              </div>
+              <div class="swatch swatch-brown">
+                <span class="name">tamsiai ruda</span>
+                <span class="hex">#281600</span>
+              </div>
+              <div class="swatch swatch-offwhite">
+                <span class="name">pageltusi balta</span>
+                <span class="hex">#DFDFD5</span>
+              </div>
+              <div class="swatch swatch-white">
+                <span class="name">baltų balta</span>
+                <span class="hex">#FFFFFF</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Panel: Typography -->
+        <section class="panel panel-type" id="type">
+          <div class="container type-wrap">
+            <div>
+              <div class="eyebrow">Typography</div>
+              <h2 class="display-sm">Inter + Space Grotesk</h2>
               <p>Consistent rhythm, clear hierarchy, and generous spacing create interfaces that feel unhurried yet purposeful.</p>
             </div>
+            <div class="type-samples">
+              <div class="type-sample h1">H1 — 64px Space Grotesk</div>
+              <div class="type-sample h2">H2 — 36px Inter</div>
+              <div class="type-sample h3">H3 — 24px Inter</div>
+              <div class="type-sample body">Body — 16px Plex Mono</div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="cta" id="contact" aria-labelledby="cta-title">
-        <div class="container card card-accent reveal up">
-          <h2 id="cta-title">Ready to get started?</h2>
-          <p>Tell us about your team. We’ll reach out with a tailored walkthrough.</p>
-          <form class="cta-form" action="#" method="post" onsubmit="event.preventDefault(); alert('Thanks! We will be in touch.');">
-            <input type="email" name="email" placeholder="Work email" required />
-            <button class="btn btn-primary" type="submit">Request access</button>
-          </form>
-        </div>
-      </section>
+        <!-- Panel: CTA -->
+        <section class="panel panel-cta" id="contact" aria-labelledby="cta-title">
+          <div class="container cta-card">
+            <h2 id="cta-title" class="display-sm">Ready to get started?</h2>
+            <p>Tell us about your team. We’ll reach out with a tailored walkthrough.</p>
+            <form class="cta-form" action="#" method="post" onsubmit="event.preventDefault(); alert('Thanks! We will be in touch.');">
+              <input type="email" name="email" placeholder="Work email" required />
+              <button class="btn btn-primary" type="submit">Request access</button>
+            </form>
+          </div>
+        </section>
+      </div>
     </main>
 
-    <footer class="site-footer reveal fade">
+    <footer class="site-footer">
       <div class="container footer-grid">
         <div class="footer-brand">
           <img src="branding/w-white_1@4x.png" alt="Wunderbit monogram" width="40" height="40" />
           <p>© <span id="year"></span> Wunderbit. All rights reserved.</p>
         </div>
         <ul class="footer-links">
-          <li><a href="#product">Product</a></li>
-          <li><a href="#solutions">Solutions</a></li>
-          <li><a href="#about">About</a></li>
+          <li><a href="#intro">Intro</a></li>
+          <li><a href="#showcase">Showcase</a></li>
+          <li><a href="#story">Story</a></li>
+          <li><a href="#type">Type</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
     </footer>
 
+    <!-- Animation libs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.35/bundled/lenis.min.js"></script>
     <script src="script.js"></script>
   </body>
   </html>
