@@ -7,77 +7,347 @@ import logoWordmarkOrange from '../branding/wb-orange_1@4x.png';
 import logoWordmarkWhite from '../branding/wb-white_1@4x.png';
 import logoMarkWhite from '../branding/w-white_1@4x.png';
 
-const NAV_ITEMS = [
-  { label: 'Intro', href: '#intro' },
-  { label: 'Showcase', href: '#showcase' },
-  { label: 'Story', href: '#story' },
-  { label: 'Type', href: '#type' },
-  { label: 'Contact', href: '#contact' }
+type Language = 'en' | 'lt';
+
+const LANGUAGES: Array<{ code: Language; label: string }> = [
+  { code: 'en', label: 'EN' },
+  { code: 'lt', label: 'LT' }
 ] as const;
+
+const NAV_ITEMS = [
+  { href: '#intro', label: { en: 'Overview', lt: 'Apžvalga' } },
+  { href: '#showcase', label: { en: 'Client Wins', lt: 'Rezultatai' } },
+  { href: '#story', label: { en: 'Offer', lt: 'Pasiūlymas' } },
+  { href: '#type', label: { en: 'Method', lt: 'Metodika' } },
+  { href: '#contact', label: { en: 'Contact', lt: 'Kontaktai' } }
+] as const;
+
+const HERO_CONTENT = {
+  badge: { en: 'Private revenue atelier', lt: 'Privati pajamų studija' },
+  title: {
+    en: 'Elite digital experiences that convert decisive leads.',
+    lt: 'Elitinės skaitmeninės patirtys, kurios paverčia apsisprendusius klientus.'
+  },
+  lead: {
+    en: 'We partner with founders who treat attention as capital. Our team engineers premium funnels, sharpens messaging, and trains yours to sustain disciplined momentum.',
+    lt: 'Dirbame su vadovais, kurie dėmesį laiko kapitalu. Kuriame premium piltuvus, aštriname žinutes ir apmokome jūsų komandą išlaikyti disciplinuotą tempą.'
+  },
+  actions: [
+    {
+      href: '#contact',
+      label: {
+        en: 'Start the executive diagnostic',
+        lt: 'Pradėti vadovų diagnostiką'
+      }
+    },
+    {
+      href: '#showcase',
+      label: {
+        en: 'See recent wins',
+        lt: 'Peržiūrėti laimėjimus'
+      }
+    }
+  ],
+  card: {
+    kicker: { en: 'Reserved capacity', lt: 'Rezervuota galia' },
+    title: { en: 'Conversion blueprints for the few', lt: 'Konversijų planai išrinktiesiems' },
+    body: {
+      en: 'Victory belongs to brands willing to choreograph every touchpoint.',
+      lt: 'Pergalė priklauso prekių ženklams, kurie režisuoja kiekvieną sąlytį.'
+    },
+    list: [
+      {
+        en: 'Luxury positioning sprints',
+        lt: 'Prabangos pozicionavimo sprintai'
+      },
+      {
+        en: 'Executive enablement rituals',
+        lt: 'Vadovų įgalinimo ritualai'
+      },
+      {
+        en: 'Deal visibility dashboards',
+        lt: 'Sandorių matomumo suvestinės'
+      }
+    ],
+    ribbon: {
+      en: 'Wunderbit private revenue lab',
+      lt: 'Wunderbit privati pajamų laboratorija'
+    }
+  }
+} as const;
 
 const HERO_METRICS = [
-  { label: 'Engagement lift', value: '+186%' },
-  { label: 'Lifecycle programs', value: '27 tailored rituals' },
-  { label: 'Delivery pace', value: 'Strategic biweekly' }
+  {
+    label: {
+      en: 'Qualified leads in 90 days',
+      lt: 'Kvalifikuoti kontaktai per 90 dienų'
+    },
+    value: {
+      en: '3.4x lift',
+      lt: '3,4 karto augimas'
+    }
+  },
+  {
+    label: {
+      en: 'Average deal size',
+      lt: 'Vidutinė sandorio vertė'
+    },
+    value: {
+      en: '+48% premium',
+      lt: '+48 % aukštesnė vertė'
+    }
+  },
+  {
+    label: {
+      en: 'Sales cycle reduction',
+      lt: 'Pardavimų ciklo sutrumpėjimas'
+    },
+    value: {
+      en: '-27 days',
+      lt: '-27 dienos'
+    }
+  }
 ] as const;
 
-const HERO_TILES = [
-  { name: 'oranžinė', value: '#E8623F', tone: 'warm' },
-  { name: 'pageltusi balta', value: '#DFDFD5', tone: 'soft' },
-  { name: 'tamsiai ruda', value: '#281600', tone: 'deep' }
+const HERO_PILLARS = [
+  {
+    title: {
+      en: 'Private funnel architecture',
+      lt: 'Privati piltuvėlio architektūra'
+    },
+    description: {
+      en: 'Bespoke lead journeys engineered for high-consideration purchases.',
+      lt: 'Individualūs klientų keliai, sukurti didelės vertės sprendimams.'
+    }
+  },
+  {
+    title: { en: 'Executive enablement', lt: 'Vadovų įgalinimas' },
+    description: {
+      en: 'Playbooks, scripts, and rituals that keep senior teams accountable.',
+      lt: 'Vadovų komandas laikantys atsakomybėje planai, skriptai ir ritualai.'
+    }
+  },
+  {
+    title: { en: 'Measurement with meaning', lt: 'Sąmoningas matavimas' },
+    description: {
+      en: 'North-star dashboards and weekly reviews tied to revenue outcomes.',
+      lt: 'Svarbiausi rodiklių skydai ir savaitinės apžvalgos, susietos su pajamomis.'
+    }
+  }
 ] as const;
+
+const HERO_MARQUEE = {
+  en: ['Elite conversion', 'Private funnels', 'Luxury positioning', 'Vilnius excellence'],
+  lt: ['Elitinė konversija', 'Privatūs piltuvai', 'Prabangos pozicionavimas', 'Vilniaus meistrystė']
+} as const;
+
+const HEADER_CTA = { en: 'Start a project', lt: 'Pradėti projektą' } as const;
 
 const SHOWCASE_ITEMS = [
   {
     theme: 'theme-orbit',
-    tag: 'Flow Sequencer',
-    title: 'Orchestra OS',
-    copy: 'A cross-team ritual manager delivering biweekly clarity and luminous decision boards.',
-    bullets: ['Predictive cadence analytics', 'Accessible gradient surfaces', 'Premium interaction tokens']
+    tag: { en: 'Wealth tech', lt: 'Finansų technologijos' },
+    title: 'Siena Capital',
+    copy: {
+      en: 'Tripled UHNW consultations in eight weeks with a concierge-grade booking flow.',
+      lt: 'Per aštuonias savaites tris kartus padidinome itin turtingų klientų konsultacijas sukūrę konsjeržo lygio registracijos procesą.'
+    },
+    bullets: [
+      { en: 'Private scoring portal for advisors', lt: 'Privatus konsultantų vertinimo portalas' },
+      { en: 'Luxury nurture journeys with scarcity cues', lt: 'Prabangūs išlaikymo keliai su išskirtinumo signalais' },
+      { en: 'Executive dashboard for daily deal health', lt: 'Vadovų suvestinė kasdienei sandorių būklei' }
+    ]
   },
   {
     theme: 'theme-ember',
-    tag: 'Clienteling',
-    title: 'Patina Commerce',
-    copy: 'Brand storytelling that glows with hospitality-grade personalization and calm motion.',
-    bullets: ['Adaptive typography ladder', 'Immersive gradient canvases', 'Seamless ritual checkout']
+    tag: { en: 'Luxury retail', lt: 'Prabangios mažmena' },
+    title: 'Velvet Atelier',
+    copy: {
+      en: 'Grew premium conversion by 61% through narrative-led ecommerce and VIP care.',
+      lt: 'Padidinome premium konversiją 61 %, sukūrę pasakojimu paremtą el. prekybą ir VIP aptarnavimą.'
+    },
+    bullets: [
+      { en: 'High-touch clienteling CRM', lt: 'Asmeninis klientų CRM' },
+      { en: 'Story-driven launch playbooks', lt: 'Pasakojimu paremti paleidimo scenarijai' },
+      { en: 'Mobile-first VIP checkout', lt: 'Mobilus VIP atsiskaitymas' }
+    ]
   },
   {
     theme: 'theme-atelier',
-    tag: 'Cultural OS',
-    title: 'Residency Atlas',
-    copy: 'A calm intranet built for mindful companies that protect focus and celebrate craft.',
-    bullets: ['Story-driven dashboards', 'Signal to noise filtration', 'Wellness cadence loops']
+    tag: { en: 'B2B SaaS', lt: 'B2B SaaS' },
+    title: 'Northwind Ops',
+    copy: {
+      en: 'Cut onboarding time in half by aligning product tours, coaching, and enablement.',
+      lt: 'Perpus sutrumpinome įkėlimą suderinę produkto pristatymus, mokymus ir įgalinimą.'
+    },
+    bullets: [
+      { en: 'Deal-desk workflow automation', lt: 'Sandorių vadybos automatizacija' },
+      { en: 'Signals-based success coaching', lt: 'Signalais paremta sėkmės konsultacija' },
+      { en: 'Executive KPI command center', lt: 'Vadovų KPI valdymo centras' }
+    ]
   },
   {
     theme: 'theme-lucent',
-    tag: 'Spatial product',
-    title: 'Interval Studio',
-    copy: 'Hybrid architecture linking physical installations with luminous spatial audio direction.',
-    bullets: ['Sensorial gradient matrix', 'Tactile brand gestures', 'Premium service orchestration']
+    tag: { en: 'Hospitality', lt: 'Svetingumas' },
+    title: 'Meridian Suites',
+    copy: {
+      en: 'Raised direct bookings 44% by mirroring the premium stay across every touchpoint.',
+      lt: 'Padidinome tiesioginius užsakymus 44 %, visus kontaktus suderinę su premium viešnage.'
+    },
+    bullets: [
+      { en: 'Personalized itinerary builder', lt: 'Personalizuotas maršrutų planuotojas' },
+      { en: 'Real-time status messaging', lt: 'Pranešimai realiu laiku' },
+      { en: 'Mobile concierge microsite', lt: 'Mobilus konsjeržo mikro puslapis' }
+    ]
   }
 ] as const;
 
-const PALETTE_ITEMS = [
-  { name: 'oranžinė', value: '#E8623F', tone: 'orange' },
-  { name: 'pageltusi balta', value: '#DFDFD5', tone: 'cream' },
-  { name: 'baltų balta', value: '#FFFFFF', tone: 'white' },
-  { name: 'tamsiai ruda', value: '#281600', tone: 'coal' }
+const OFFER_POINTS = [
+  {
+    heading: { en: 'Only for market shapers', lt: 'Tik rinkos formuotojams' },
+    body: {
+      en: 'We partner with leaders who protect their time, demand discretion, and invest in premium perception.',
+      lt: 'Dirbame su lyderiais, kurie saugo savo laiką, vertina diskretiškumą ir investuoja į premium įvaizdį.'
+    }
+  },
+  {
+    heading: { en: 'Lead systems that close', lt: 'Uždarančios piltuvų sistemos' },
+    body: {
+      en: 'Positioning, paid, outbound, and nurture move in concert to convert high-consideration buyers.',
+      lt: 'Pozicionavimas, reklama, outbound ir palaikymas veikia kartu, kad įtikintų aukštos vertės pirkėjus.'
+    }
+  },
+  {
+    heading: { en: 'Lithuanian roots, global reach', lt: 'Lietuviškos šaknys, pasaulinis mastas' },
+    body: {
+      en: 'Vilnius-based, trusted by international brands seeking discreet acceleration and measurable growth.',
+      lt: 'Įsikūrę Vilniuje, dirbame su tarptautiniais prekių ženklais, siekiančiais diskretiško ir pamatuojamo augimo.'
+    }
+  }
 ] as const;
 
-const TYPE_SPECS = [
-  { label: 'H1', description: '34pt NB International Pro Bold', weight: 'h1' },
-  { label: 'H2', description: '22pt NB International Pro Regular', weight: 'h2' },
-  { label: 'H3', description: '18pt NB International Pro Light', weight: 'h3' },
-  { label: 'Body', description: '14pt NB International Pro Mono', weight: 'body' }
+const METHOD_STEPS = [
+  {
+    phase: { en: '01. Evidence sprint', lt: '01. Įrodymų sprintas' },
+    detail: {
+      en: 'Within 14 days we audit funnels, messaging, and ops to surface the leaks blocking premium buyers.',
+      lt: 'Per 14 dienų audituojame piltuvus, žinutes ir operacijas, kad rastume kliūtis, stabdančias premium pirkėjus.'
+    }
+  },
+  {
+    phase: { en: '02. Signature architecture', lt: '02. Parašas architektūroje' },
+    detail: {
+      en: 'We design scarcity-backed journeys, revenue dashboards, and enablement rituals for your team.',
+      lt: 'Kuriame retumu paremtus kelius, pajamų suvestines ir komandos ritualus.'
+    }
+  },
+  {
+    phase: { en: '03. Launch and refine', lt: '03. Paleidimas ir tobulinimas' },
+    detail: {
+      en: 'Weekly partner sessions align experiments, track impact, and keep momentum disciplined.',
+      lt: 'Savaitiniai partnerių susitikimai derina eksperimentus, matuoja poveikį ir išlaiko discipliną.'
+    }
+  },
+  {
+    phase: { en: '04. Scale with confidence', lt: '04. Skaluokite užtikrintai' },
+    detail: {
+      en: 'We coach internal teams to own the system while remaining on call for premium enhancements.',
+      lt: 'Mokome vidines komandas valdyti sistemą ir liekame pasiekiami premium patobulinimams.'
+    }
+  }
 ] as const;
 
-const TYPE_PREVIEW = [
-  { tone: 'h1', text: 'Manage your work with patience' },
-  { tone: 'h2', text: 'Manage your work with patience' },
-  { tone: 'h3', text: 'Manage your work with patience' },
-  { tone: 'body', text: 'Manage your work with patience' }
+const METHOD_DELIVERABLES = [
+  { en: 'Executive conversion dashboard', lt: 'Vadovų konversijų suvestinė' },
+  { en: 'Premium messaging frameworks', lt: 'Premium žinučių struktūros' },
+  { en: 'Revenue enablement scripts', lt: 'Pajamų įgalinimo skriptai' },
+  { en: '90-day acceleration roadmap', lt: '90 dienų spartinimo planas' }
 ] as const;
+
+const METHOD_CARD = {
+  heading: { en: 'What you receive', lt: 'Ką gaunate' },
+  note: {
+    en: 'Guided by a senior partner each week.',
+    lt: 'Kiekvieną savaitę dirbame su vyresniuoju partneriu.'
+  }
+} as const;
+
+const SHOWCASE_COPY = {
+  eyebrow: { en: 'Client wins', lt: 'Rezultatai' },
+  heading: {
+    en: 'Lead systems engineered for premium revenue',
+    lt: 'Premium pajamoms sukurti piltuvai'
+  },
+  body: {
+    en: 'We design, launch, and scale high-consideration funnels that protect brand equity while compounding pipeline.',
+    lt: 'Kuriame, paleidžiame ir plečiame aukštos vertės piltuvus, kurie saugo prekės ženklo prestižą ir didina pardavimo vamzdyną.'
+  }
+} as const;
+
+const OFFER_INTRO = {
+  eyebrow: { en: 'Offer', lt: 'Pasiūlymas' },
+  heading: {
+    en: 'Premium growth reserved for committed teams',
+    lt: 'Premium augimas skiriamas įsipareigojusioms komandoms'
+  },
+  body: {
+    en: 'We collaborate with founders and marketing leaders prepared to invest in rare, defensible experiences.',
+    lt: 'Dirbame su vadovais ir marketingo lyderiais, pasirengusiais investuoti į retas, apsaugomas patirtis.'
+  },
+  quote: {
+    en: 'Victory favours brands who treat attention as an asset.',
+    lt: 'Pergalė lydi ženklus, kurie dėmesį laiko turtu.'
+  },
+  note: {
+    en: 'Sessions run in English or Lithuanian—your choice.',
+    lt: 'Sesijas vedame anglų arba lietuvių kalba – pagal jūsų pasirinkimą.'
+  }
+} as const;
+
+const OFFER_CTA = { en: 'Request a private proposal', lt: 'Paprašyti privataus pasiūlymo' } as const;
+
+const METHOD_INTRO = {
+  eyebrow: { en: 'Method', lt: 'Metodika' },
+  heading: {
+    en: 'Four disciplined moves to unlock premium demand',
+    lt: 'Keturi disciplinuoti žingsniai premium paklausai atrakinti'
+  },
+  body: {
+    en: 'Evidence, architecture, launch, and scale—each stage is accountable to measurable revenue.',
+    lt: 'Įrodymai, architektūra, paleidimas ir mastelis – kiekvienas etapas siejamas su pamatuojamomis pajamomis.'
+  }
+} as const;
+
+const CONTACT_COPY = {
+  eyebrow: { en: 'Contact', lt: 'Kontaktai' },
+  heading: {
+    en: 'Request a private growth intensive',
+    lt: 'Pateikite privačią augimo užklausą'
+  },
+  body: {
+    en: 'Share goals, markets, and constraints—we respond with a discreet diagnostic and next steps.',
+    lt: 'Papasakokite apie tikslus, rinkas ir ribojimus – atsiųsime diskretišką diagnostiką ir tolimesnius žingsnius.'
+  },
+  emailLabel: { en: 'Work email', lt: 'Darbo el. paštas' },
+  emailPlaceholder: { en: 'growth@brand.com', lt: 'growth@brand.com' },
+  messageLabel: { en: 'What do you want to transform?', lt: 'Ką norite transformuoti?' },
+  messagePlaceholder: {
+    en: 'Premium funnels, conversion messaging, executive enablement…',
+    lt: 'Premium piltuvai, konversijų žinutės, vadovų įgalinimas…'
+  },
+  submit: {
+    idle: { en: 'Request a premium audit', lt: 'Paprašyti premium audito' },
+    success: { en: 'Request received', lt: 'Užklausa gauta' }
+  },
+  meta: { en: 'Premium studio · Vilnius', lt: 'Premium studija · Vilnius' }
+} as const;
+
+const FOOTER_COPY = {
+  tagline: {
+    en: 'Private revenue lab for premium brands.',
+    lt: 'Privati pajamų laboratorija premium ženklams.'
+  }
+} as const;
 
 function App() {
   const appRef = useRef<HTMLDivElement | null>(null);
@@ -88,11 +358,13 @@ function App() {
   const [navOpen, setNavOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('#intro');
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [language, setLanguage] = useState<Language>('en');
   const lenisRef = useRef<Lenis | null>(null);
   const rafRef = useRef<number>();
   const pointerMoveRef = useRef<(event: PointerEvent) => void>();
 
   const currentYear = useMemo(() => new Date().getFullYear(), []);
+  const getText = <T extends Record<Language, string>>(value: T) => value[language];
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -104,7 +376,7 @@ function App() {
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
       smoothTouch: false
-    });
+    } as any);
 
     lenisRef.current = lenis;
 
@@ -241,7 +513,12 @@ function App() {
     pendingAdds.forEach((fn) => ctx.add(fn));
   }
 
-    const scrollTriggerRefresh = () => lenis.update();
+    const scrollTriggerRefresh = () => {
+      const updater = (lenis as any).update;
+      if (typeof updater === 'function') {
+        updater.call(lenis);
+      }
+    };
     ScrollTrigger.addEventListener('refresh', scrollTriggerRefresh);
 
     return () => {
@@ -289,7 +566,7 @@ function App() {
           <a className="brand" href="#intro" aria-label="Wunderbit home">
             <img src={logoWordmarkOrange} alt="Wunderbit" width={132} height={32} />
           </a>
-          <nav ref={navRef} className={`primary-nav${navOpen ? ' open' : ''}`} aria-label="Primary">
+          <nav ref={navRef} className={`primary-nav${navOpen ? ' open' : ''}`} aria-label="Primary navigation">
             <button
               ref={navToggleRef}
               className="nav-toggle"
@@ -307,13 +584,28 @@ function App() {
               {NAV_ITEMS.map((item) => (
                 <li key={item.href}>
                   <a href={item.href} aria-current={activeSection === item.href ? 'true' : undefined}>
-                    {item.label}
+                    {getText(item.label)}
                   </a>
                 </li>
               ))}
             </ul>
           </nav>
-          <a className="btn btn-outline" href="#contact">Start a project</a>
+          <div className="header-controls">
+            <div className="language-toggle" role="radiogroup" aria-label="Site language">
+              {LANGUAGES.map(({ code, label }) => (
+                <button
+                  key={code}
+                  type="button"
+                  className={`language-toggle__btn${language === code ? ' is-active' : ''}`}
+                  aria-pressed={language === code}
+                  onClick={() => setLanguage(code)}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+            <a className="btn btn-outline" href="#contact">{getText(HEADER_CTA)}</a>
+          </div>
         </div>
       </header>
 
@@ -323,7 +615,7 @@ function App() {
             key={`dot-${item.href}`}
             href={item.href}
             className={`dot${activeSection === item.href ? ' is-active' : ''}`}
-            aria-label={item.label}
+            aria-label={getText(item.label)}
           />
         ))}
       </aside>
@@ -334,21 +626,21 @@ function App() {
             <div className="hero-sheen" aria-hidden="true" />
             <div className="container hero-grid">
               <div className="hero-copy" data-animate>
-                <span className="hero-badge" data-hero="badge">Premium workflow atelier</span>
-                <h1 data-hero="title">Manage your work with patience</h1>
-                <p data-hero="lead">
-                  Wunderbit choreographs technology, design, and calm velocity. We develop luminous digital ecosystems
-                  that let thoughtful teams move deliberately without losing momentum.
-                </p>
+                <span className="hero-badge" data-hero="badge">{getText(HERO_CONTENT.badge)}</span>
+                <h1 data-hero="title">{getText(HERO_CONTENT.title)}</h1>
+                <p data-hero="lead">{getText(HERO_CONTENT.lead)}</p>
                 <div className="hero-actions" data-hero="actions">
-                  <a className="btn btn-solid" href="#showcase">Explore showcase</a>
-                  <a className="btn btn-ghost" href="#contact">Book a conversation</a>
+                  {HERO_CONTENT.actions.map((action) => (
+                    <a key={action.href} className={`btn ${action.href === '#contact' ? 'btn-solid' : 'btn-ghost'}`} href={action.href}>
+                      {getText(action.label)}
+                    </a>
+                  ))}
                 </div>
                 <dl className="hero-metrics" data-hero="metrics">
                   {HERO_METRICS.map((metric) => (
-                    <div key={metric.label}>
-                      <dt>{metric.label}</dt>
-                      <dd>{metric.value}</dd>
+                    <div key={metric.label.en}>
+                      <dt>{getText(metric.label)}</dt>
+                      <dd>{getText(metric.value)}</dd>
                     </div>
                   ))}
                 </dl>
@@ -357,17 +649,17 @@ function App() {
                 <div className="hero-capsule">
                   <div className="hero-gradient" aria-hidden="true" />
                   <div className="hero-card" data-hero="card">
-                    <span className="card-kicker">Calibrated flow</span>
-                    <h3>Precision meets calm</h3>
-                    <p>We frame each sprint as a ritual — research, orchestration, refinement. Momentum without rush.</p>
+                    <span className="card-kicker">{getText(HERO_CONTENT.card.kicker)}</span>
+                    <h3>{getText(HERO_CONTENT.card.title)}</h3>
+                    <p>{getText(HERO_CONTENT.card.body)}</p>
                     <ul className="card-list">
-                      <li>Signal mapping dashboards</li>
-                      <li>Persona aligned rituals</li>
-                      <li>Real-time health telemetry</li>
+                      {HERO_CONTENT.card.list.map((item) => (
+                        <li key={item.en}>{getText(item)}</li>
+                      ))}
                     </ul>
                     <div className="card-ribbon">
                       <img src={logoWordmarkWhite} alt="W mark" width={32} height={32} />
-                      <span>Wunderbit premium atelier</span>
+                      <span>{getText(HERO_CONTENT.card.ribbon)}</span>
                     </div>
                   </div>
                   <div className="hero-pulses" aria-hidden="true">
@@ -376,11 +668,11 @@ function App() {
                     <span />
                   </div>
                 </div>
-                <div className="hero-stack" aria-hidden="true">
-                  {HERO_TILES.map((tile) => (
-                    <div key={tile.name} className={`hero-tile hero-tile--${tile.tone}`}>
-                      <span>{tile.name}</span>
-                      <strong>{tile.value}</strong>
+                <div className="hero-stack" data-animate>
+                  {HERO_PILLARS.map((pillar) => (
+                    <div key={pillar.title.en} className="hero-pill">
+                      <strong>{getText(pillar.title)}</strong>
+                      <p>{getText(pillar.description)}</p>
                     </div>
                   ))}
                 </div>
@@ -388,14 +680,11 @@ function App() {
             </div>
             <div className="hero-marquee" aria-hidden="true">
               <div className="marquee-track">
-                <span>Patient precision</span>
-                <span>Premium rituals</span>
-                <span>Calm collaboration</span>
-                <span>Signature typography</span>
-                <span>Patient precision</span>
-                <span>Premium rituals</span>
-                <span>Calm collaboration</span>
-                <span>Signature typography</span>
+                {[...Array(2)]
+                  .flatMap(() => HERO_MARQUEE[language])
+                  .map((phrase, index) => (
+                    <span key={`${phrase}-${index}`}>{phrase}</span>
+                  ))}
               </div>
             </div>
           </section>
@@ -403,25 +692,22 @@ function App() {
           <section className="section section-panorama" id="showcase" aria-label="Showcase" data-section>
             <div className="container section-head">
               <div data-animate>
-                <span className="eyebrow">Showcase</span>
-                <h2>Premium launches, grounded in ritual</h2>
+                <span className="eyebrow">{getText(SHOWCASE_COPY.eyebrow)}</span>
+                <h2>{getText(SHOWCASE_COPY.heading)}</h2>
               </div>
-              <p data-animate>
-                Every engagement is composed as a layered system. We balance patient craftsmanship with decisive execution
-                so your teams inherit a confident rhythm.
-              </p>
+              <p data-animate>{getText(SHOWCASE_COPY.body)}</p>
             </div>
             <div className="panorama">
               <div className="panorama-track">
                 {SHOWCASE_ITEMS.map((item) => (
                   <article key={item.title} className={`panorama-card ${item.theme}`} data-animate>
                     <div className="card-inner">
-                      <span className="card-tag">{item.tag}</span>
+                      <span className="card-tag">{getText(item.tag)}</span>
                       <h3>{item.title}</h3>
-                      <p>{item.copy}</p>
+                      <p>{getText(item.copy)}</p>
                       <ul>
                         {item.bullets.map((bullet) => (
-                          <li key={bullet}>{bullet}</li>
+                          <li key={bullet.en}>{getText(bullet)}</li>
                         ))}
                       </ul>
                     </div>
@@ -431,72 +717,56 @@ function App() {
             </div>
           </section>
 
-          <section className="section section-story" id="story" data-section>
-            <div className="container story-grid">
-              <div className="story-intro" data-animate>
-                <span className="eyebrow">Brand story</span>
-                <h2>Quiet power, luminous contrast</h2>
-                <p>
-                  oranžinė <strong>#E8623F</strong> delivers warmth and determination. pageltusi balta <strong>#DFDFD5</strong> softens the
-                  interface for long-form focus. tamsiai ruda <strong>#281600</strong> anchors every gradient with a confident base.
-                </p>
+          <section className="section section-offer" id="story" data-section>
+            <div className="container offer-grid">
+              <div className="offer-intro" data-animate>
+                <span className="eyebrow">{getText(OFFER_INTRO.eyebrow)}</span>
+                <h2>{getText(OFFER_INTRO.heading)}</h2>
+                <p>{getText(OFFER_INTRO.body)}</p>
+                <p className="offer-quote">{getText(OFFER_INTRO.quote)}</p>
               </div>
-              <div className="story-columns">
-                <article data-animate>
-                  <h3>Ritual design</h3>
-                  <p>
-                    We choreograph interactions as rituals, creating signals that invite teams into patient flow. The result
-                    is a calm, luxurious cadence.
-                  </p>
-                </article>
-                <article data-animate>
-                  <h3>Signature palette</h3>
-                  <div className="palette">
-                    {PALETTE_ITEMS.map((swatch) => (
-                      <div key={swatch.value} className={`swatch swatch-${swatch.tone}`}>
-                        <span>{swatch.name}</span>
-                        <strong>{swatch.value}</strong>
-                      </div>
-                    ))}
-                  </div>
-                </article>
-                <article data-animate>
-                  <h3>Measured technology</h3>
-                  <p>
-                    From signal mapping to premium animations, we select tools that respect attention — GSAP, Lenis, and
-                    bespoke data visualizations power our calm interfaces.
-                  </p>
-                </article>
+              <div className="offer-points">
+                {OFFER_POINTS.map((point) => (
+                  <article key={point.heading.en} data-animate>
+                    <h3>{getText(point.heading)}</h3>
+                    <p>{getText(point.body)}</p>
+                  </article>
+                ))}
+                <div className="offer-cta" data-animate>
+                  <a className="btn btn-solid" href="#contact">{getText(OFFER_CTA)}</a>
+                  <p>{getText(OFFER_INTRO.note)}</p>
+                </div>
               </div>
             </div>
           </section>
 
-          <section className="section section-type" id="type" data-section>
-            <div className="container type-grid">
-              <div className="type-intro" data-animate>
-                <span className="eyebrow">Typography</span>
-                <h2>NB International Pro system</h2>
-                <p>
-                  Our typography is patient and precise. The hierarchy is clear, luxurious, and meticulously spaced for premium
-                  editorial flows.
-                </p>
+          <section className="section section-method" id="type" data-section>
+            <div className="container method-grid">
+              <div className="method-intro" data-animate>
+                <span className="eyebrow">{getText(METHOD_INTRO.eyebrow)}</span>
+                <h2>{getText(METHOD_INTRO.heading)}</h2>
+                <p>{getText(METHOD_INTRO.body)}</p>
               </div>
-              <div className="type-spec" data-animate>
-                <dl>
-                  {TYPE_SPECS.map((spec) => (
-                    <div key={spec.label}>
-                      <dt>{spec.label}</dt>
-                      <dd>{spec.description}</dd>
-                    </div>
+              <div className="method-steps" data-animate>
+                <ol>
+                  {METHOD_STEPS.map((step) => (
+                    <li key={step.phase.en}>
+                      <h3>{getText(step.phase)}</h3>
+                      <p>{getText(step.detail)}</p>
+                    </li>
                   ))}
-                </dl>
+                </ol>
               </div>
-              <div className="type-preview" data-animate>
-                {TYPE_PREVIEW.map((preview) => (
-                  <div key={preview.tone} className={`type-block ${preview.tone}`}>
-                    {preview.text}
-                  </div>
-                ))}
+              <div className="method-proof" data-animate>
+                <div className="method-card">
+                  <h3>{getText(METHOD_CARD.heading)}</h3>
+                  <ul>
+                    {METHOD_DELIVERABLES.map((deliverable) => (
+                      <li key={deliverable.en}>{getText(deliverable)}</li>
+                    ))}
+                  </ul>
+                  <p className="method-note">{getText(METHOD_CARD.note)}</p>
+                </div>
               </div>
             </div>
           </section>
@@ -504,34 +774,36 @@ function App() {
           <section className="section section-contact" id="contact" aria-labelledby="contact-title" data-section>
             <div className="container contact-card" data-animate>
               <div className="contact-copy">
-                <span className="eyebrow">Contact</span>
-                <h2 id="contact-title">Invite Wunderbit into your ritual</h2>
-                <p>
-                  We begin with a patient diagnostic: aligning cadence, typography, and technology to your culture. Let’s orchestrate
-                  a premium journey.
-                </p>
+                <span className="eyebrow">{getText(CONTACT_COPY.eyebrow)}</span>
+                <h2 id="contact-title">{getText(CONTACT_COPY.heading)}</h2>
+                <p>{getText(CONTACT_COPY.body)}</p>
               </div>
               <form className="contact-form" onSubmit={handleFormSubmit}>
                 <label>
-                  <span>Work email</span>
-                  <input type="email" name="email" placeholder="you@company.com" required />
+                  <span>{getText(CONTACT_COPY.emailLabel)}</span>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder={getText(CONTACT_COPY.emailPlaceholder)}
+                    required
+                  />
                 </label>
                 <label>
-                  <span>What do you want to transform?</span>
+                  <span>{getText(CONTACT_COPY.messageLabel)}</span>
                   <textarea
                     name="message"
                     rows={3}
-                    placeholder="Lifecycle rituals, internal tooling, premium commerce..."
+                    placeholder={getText(CONTACT_COPY.messagePlaceholder)}
                     required
                   />
                 </label>
                 <button className="btn btn-solid" type="submit" disabled={formSubmitted}>
-                  {formSubmitted ? 'Request received' : 'Request a premium audit'}
+                  {getText(formSubmitted ? CONTACT_COPY.submit.success : CONTACT_COPY.submit.idle)}
                 </button>
               </form>
               <div className="contact-meta" aria-hidden="true">
                 <span>© {currentYear} Wunderbit</span>
-                <span>Premium studio · Vilnius</span>
+                <span>{getText(CONTACT_COPY.meta)}</span>
               </div>
             </div>
           </section>
@@ -542,12 +814,12 @@ function App() {
         <div className="container footer-grid">
           <div className="footer-brand">
             <img src={logoMarkWhite} alt="Wunderbit monogram" width={44} height={44} />
-            <p>Premium rituals, crafted with patience.</p>
+            <p>{getText(FOOTER_COPY.tagline)}</p>
           </div>
           <ul className="footer-links">
             {NAV_ITEMS.map((item) => (
               <li key={`footer-${item.href}`}>
-                <a href={item.href}>{item.label}</a>
+                <a href={item.href}>{getText(item.label)}</a>
               </li>
             ))}
           </ul>
