@@ -9,11 +9,176 @@
     <link rel="preconnect" href="https://fonts.cdnfonts.com" />
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/nb-international-pro" />
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/nb-international-pro-mono" />
-    <link rel="icon" type="image/png" href="/assets/w-orange_1@4x-B_Nz3BeS.png" />
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/script.js"></script>
+    <script type="module">
+      const normalizedPath = window.location.pathname.replace(/\/+$/, '') || '/';
+      const isQuestionnaireRoute =
+        normalizedPath === '/questionnaire/discovery' ||
+        normalizedPath === '/questionnaire/project';
+
+      if (isQuestionnaireRoute) {
+        import('/src/main.tsx');
+      } else {
+        const workLinks = [
+          { href: 'https://55projektai.lt/', name: '55 Projektai', site: 'projektai' },
+          { href: 'https://currus.lt/', name: 'Currus', site: 'currus' },
+          { href: 'https://faster.fitness/', name: 'Faster Endurance', site: 'faster' },
+          { href: 'https://kaliadziuk.lt/lt', name: 'Kaliadziuk', site: 'kaliadziuk' },
+          { href: '', name: 'Rėminimo dirbtuvės', site: 'reminio' }
+        ];
+
+        const workHoverStyle = document.createElement('style');
+        workHoverStyle.textContent = `
+          .panorama-card.panorama-image[data-work-name] .work-hover-glow {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 38%;
+            background: linear-gradient(0deg, rgba(12, 6, 2, 0.8), rgba(12, 6, 2, 0));
+            z-index: 8;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.24s ease;
+          }
+
+          .panorama-card.panorama-image[data-work-name] .work-hover-badge {
+            position: absolute;
+            left: 20px;
+            bottom: 16px;
+            z-index: 9;
+            color: var(--hover-label-color, #dfdfd5);
+            background: var(--hover-label-bg, rgba(12, 6, 2, 0.88));
+            border: 1px solid var(--hover-label-border, rgba(223, 223, 213, 0.3));
+            border-radius: 10px;
+            box-shadow: var(--hover-label-shadow, 0 10px 30px rgba(0, 0, 0, 0.25));
+            padding: 10px 14px;
+            font-family: var(--font-heading);
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(8px);
+            pointer-events: none;
+            transition: opacity 0.24s ease, transform 0.24s ease;
+          }
+
+          .panorama-card.panorama-image[data-work-name]:hover .work-hover-glow,
+          .panorama-card.panorama-image[data-work-name]:hover .work-hover-badge {
+            opacity: 1;
+          }
+
+          .panorama-card.panorama-image[data-work-name]:hover .work-hover-badge {
+            transform: translateY(0);
+          }
+
+          .panorama-card.panorama-image[data-work-site='projektai'] {
+            --hover-label-bg: linear-gradient(120deg, rgba(0, 95, 63, 0.95), rgba(15, 15, 15, 0.94));
+            --hover-label-border: rgba(224, 241, 242, 0.45);
+            --hover-label-color: #e0f1f2;
+            --hover-label-shadow: 0 14px 34px rgba(0, 95, 63, 0.3);
+          }
+
+          .panorama-card.panorama-image[data-work-site='currus'] {
+            --hover-label-bg: linear-gradient(120deg, rgba(34, 34, 37, 0.95), rgba(75, 58, 45, 0.94));
+            --hover-label-border: rgba(223, 215, 201, 0.5);
+            --hover-label-color: #f5f0e8;
+            --hover-label-shadow: 0 14px 32px rgba(34, 34, 37, 0.35);
+          }
+
+          .panorama-card.panorama-image[data-work-site='faster'] {
+            --hover-label-bg: linear-gradient(120deg, rgba(146, 111, 52, 0.96), rgba(224, 170, 62, 0.9));
+            --hover-label-border: rgba(241, 205, 120, 0.7);
+            --hover-label-color: #241a0d;
+            --hover-label-shadow: 0 14px 34px rgba(146, 111, 52, 0.35);
+          }
+
+          .panorama-card.panorama-image[data-work-site='kaliadziuk'] {
+            --hover-label-bg: linear-gradient(120deg, rgba(45, 74, 34, 0.95), rgba(31, 53, 24, 0.95));
+            --hover-label-border: rgba(220, 244, 30, 0.8);
+            --hover-label-color: #dcf41e;
+            --hover-label-shadow: 0 14px 34px rgba(45, 74, 34, 0.45);
+          }
+
+          .panorama-card.panorama-image[data-work-site='reminio'] {
+            --hover-label-bg: rgba(12, 6, 2, 0.88);
+            --hover-label-border: rgba(223, 223, 213, 0.3);
+            --hover-label-color: #dfdfd5;
+            --hover-label-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+          }
+        `;
+        document.head.appendChild(workHoverStyle);
+
+        const attachWorkImageLinks = () => {
+          const cards = Array.from(document.querySelectorAll('.panorama-card.panorama-image'));
+          if (cards.length < workLinks.length) return false;
+
+          cards.slice(0, workLinks.length).forEach((card, index) => {
+            const element = card;
+            const link = workLinks[index];
+            if (!link || element.dataset.linkBound === 'true') return;
+
+            element.dataset.linkBound = 'true';
+            element.dataset.workName = link.name;
+            element.dataset.workSite = link.site;
+            element.title = link.name;
+            element.setAttribute('aria-label', link.name);
+
+            if (link.href) {
+              element.style.cursor = 'pointer';
+            } else {
+              element.style.cursor = 'default';
+            }
+
+            if (!element.querySelector('.work-hover-glow')) {
+              const glow = document.createElement('span');
+              glow.className = 'work-hover-glow';
+              element.appendChild(glow);
+            }
+
+            if (!element.querySelector('.work-hover-badge')) {
+              const badge = document.createElement('span');
+              badge.className = 'work-hover-badge';
+              badge.textContent = link.name;
+              element.appendChild(badge);
+            }
+
+            if (link.href) {
+              element.addEventListener('click', () => {
+                window.open(link.href, '_blank', 'noopener,noreferrer');
+              });
+            }
+          });
+
+          return true;
+        };
+
+        const ensureWorkImageLinks = () => {
+          if (attachWorkImageLinks()) return;
+
+          const observer = new MutationObserver(() => {
+            if (attachWorkImageLinks()) observer.disconnect();
+          });
+
+          observer.observe(document.body, { childList: true, subtree: true });
+          setTimeout(() => observer.disconnect(), 10000);
+        };
+
+        const homeStyles = document.createElement('link');
+        homeStyles.rel = 'stylesheet';
+        homeStyles.href = '/styles.css';
+        document.head.appendChild(homeStyles);
+
+        const homeScript = document.createElement('script');
+        homeScript.src = '/script.js';
+        homeScript.defer = true;
+        document.body.appendChild(homeScript);
+
+        window.addEventListener('load', ensureWorkImageLinks, { once: true });
+      }
+    </script>
   </body>
 </html>
